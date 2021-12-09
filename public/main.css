@@ -1,0 +1,13 @@
+body {
+    width: 600px;
+    background-color: white;
+    margin: auto;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+article + article {
+    margin-top: 3rem;
+    padding-top: 5px;
+    border-top: #cbd5e0 solid 3px;
+}
