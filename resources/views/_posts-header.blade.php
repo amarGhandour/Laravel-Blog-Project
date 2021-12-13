@@ -5,7 +5,7 @@
 
     <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-4">
         <!--  Category -->
-        <div class="relative flex lg:inline-flex bg-gray-100 rounded-xl">
+        <div class="relative flex lg:inline-flex bg-gray-100 rounded-xl w-40">
             <x-dropdown>
 
                 <x-slot name="trigger">
@@ -58,7 +58,7 @@
     <!-- Search -->
         <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2">
             <form method="GET" action="#">
-                <input type="text" name="search" placeholder="Find something"
+                <input type="text" name="search" placeholder="Find something" value="{{request('search')}}"
                        class="bg-transparent placeholder-black font-semibold text-sm">
             </form>
         </div>
