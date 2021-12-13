@@ -25,12 +25,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        \App\Models\Post::factory(4)->create([
+        \App\Models\Post::factory(10)->create([
                 'user_id' => $user1->id,
             ]
         );
 
-        \App\Models\Post::factory(2)->create([
+        \App\Models\Post::factory(15)->create([
                 'user_id' => $user2->id,
 
 
