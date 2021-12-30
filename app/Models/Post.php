@@ -9,9 +9,9 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $guarded = [];
 
-    protected $with = ['category', 'user'];
+    protected $with = ['category', 'author'];
 
     public function getRouteKeyName()
     {
@@ -38,10 +38,10 @@ class Post extends Model
 
         });
 
-        $query->when($filters['user'] ?? false, function ($query, $user) {
+        $query->when($filters['author'] ?? false, function ($query, $author) {
 
-            $query->whereHas('user', function ($query) use ($user) {
-                $query->where('username', $user);
+            $query->whereHas('author', function ($query) use ($author) {
+                $query->where('username', $author);
             });
         });
 
@@ -53,9 +53,9 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function user()
+    public function author()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function comments()
