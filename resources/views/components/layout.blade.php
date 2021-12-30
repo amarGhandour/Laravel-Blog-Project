@@ -28,8 +28,8 @@
 
                 </form>
             @else
-                <a href="/register" class="text-xs font-bold uppercase ">Register</a>
-                <a href="/login" class="text-xs font-bold uppercase ml-10">sign in</a>
+                <a href="/register" class="text-xs font-bold uppercase bg-gray-100 px-2 py-2 rounded-xl">Register</a>
+                <a href="/login" class="text-xs font-bold uppercase ml-10 bg-gray-100 px-2 py-2 rounded-xl">sign in</a>
             @endauth
 
             <a href="#" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
