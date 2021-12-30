@@ -16,7 +16,6 @@ class PostController extends Controller
     // Route Model Binding
     public function show(Post $post)
     {
-
         return view('posts.show', [
             'post' => $post,
         ]);
