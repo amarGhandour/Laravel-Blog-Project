@@ -20,8 +20,14 @@
                 <x-form.error name="category_id"/>
             </x-form.field>
 
-            <div class="flex justify-end">
-                <x-form.button>publish</x-form.button>
+            <div class="flex">
+                <div class="flex-1 justify-end">
+                    <x-form.button name="save" value="save as draft">Save</x-form.button>
+                </div>
+
+                <div>
+                    <x-form.button name="publish" value="publish to feeds">publish</x-form.button>
+                </div>
             </div>
 
         </form>

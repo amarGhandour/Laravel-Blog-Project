@@ -27,9 +27,17 @@
                 <x-form.error name="category_id"/>
             </x-form.field>
 
-            <div class="flex justify-end">
-                <x-form.button>update</x-form.button>
+            <div class="flex">
+                <div class="flex-1 justify-end">
+                    <x-form.button name="update">update</x-form.button>
+                </div>
+                @if($post->status == 0)
+                    <div>
+                        <x-form.button name="publish">publish</x-form.button>
+                    </div>
+                @endif
             </div>
+
 
         </form>
     </x-setting>

@@ -26,8 +26,15 @@ class AdminPostController extends Controller
         $attributes['thumbnail'] = request()->file('thumbnail')->storeAs('thumbnails', request('title') . '.png');
         $attributes['user_id'] = auth()->user()->id;
 
+        if (request()->has('publish')) {
+            $attributes['status'] = 1;
+            $attributes['published_at'] = now();
+            Post::create($attributes);
+            return redirect('/')->with('success', 'Post has been published.');
+        }
+
         Post::create($attributes);
-        return redirect('/');
+        return redirect('/admin/posts')->with('success', 'Post has been moved to draft.');
 
     }
 
@@ -62,8 +69,14 @@ class AdminPostController extends Controller
             $attributes['thumbnail'] = request()->file('thumbnail')->storeAs('thumbnails', request('title') . '.png');
         }
 
-        $post->update($attributes);
+        if (request()->has('publish')) {
+            $attributes['status'] = 1;
+            $attributes['published_at'] = now();
+            $post->update($attributes);
+            return redirect('/admin/posts')->with('success', 'Post has been published.');
+        }
 
+        $post->update($attributes);
         return back()->with('success', 'Post has been updated.');
     }
 

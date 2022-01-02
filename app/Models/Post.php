@@ -45,6 +45,8 @@ class Post extends Model
             });
         });
 
+        $query->where('status', 1);
+
 
     }
 

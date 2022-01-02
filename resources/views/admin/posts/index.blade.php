@@ -12,18 +12,26 @@
                                         <div class="flex items-center">
                                             <div class="ml-4">
                                                 <div class="text-sm font-medium text-gray-900">
-                                                    {{ $post->title }}
+                                                    <a href="/posts/{{$post->slug}}">{{ $post->title }}</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
+
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span
+                                            class="inline-flex bg-green-100 px-2 rounded-full font-semibold text-green-800 text-xs leading-5"
+                                        >
+                                            {{ $post->status == 0? 'draft' : 'published' }}
+                                        </span>
+                                    </td>
+
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <a href="/admin/posts/{{$post->id}}/edit"
                                            class="text-blue-500 hover:text-blue-600">Edit</a>
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        {{--                                        <a href="/admin/posts/{{$post->id}}" class="text-red-500 hover:text-red-600">delete</a>--}}
                                         <form action="/admin/posts/{{$post->id}}" method="post">
                                             @csrf
                                             @method('delete')
