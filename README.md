@@ -1,4 +1,4 @@
-# Laravel Blog Demo Project
+# Laravel Blog Project
 
 ## Installation
 
