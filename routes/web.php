@@ -15,15 +15,18 @@ Route::post('/posts/{post:slug}/comments', [PostCommentController::class, 'store
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
 
-Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
-
 Route::get('/login', [SessionController::class, 'create'])->name('login');
 Route::post('/login', [SessionController::class, 'store']);
 
+Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
+
 // Admin
-Route::get('/admin/posts/create', [AdminPostController::class, 'create'])->middleware('admin');
-Route::post('/admin/posts', [AdminPostController::class, 'store'])->middleware('admin');;
-Route::get('/admin/posts', [AdminPostController::class, 'index'])->middleware('admin');;
-Route::get('/admin/posts/{post:id}/edit', [AdminPostController::class, 'edit']);
-Route::patch('/admin/posts/{post:id}', [AdminPostController::class, 'update']);
-Route::delete('/admin/posts/{post:id}', [AdminPostController::class, 'destroy']);
+Route::middleware('can:admin')->group(function () {
+    Route::get('/admin/posts/create', [AdminPostController::class, 'create']);
+    Route::post('/admin/posts', [AdminPostController::class, 'store']);
+    Route::get('/admin/posts', [AdminPostController::class, 'index']);
+    Route::get('/admin/posts/{post:id}/edit', [AdminPostController::class, 'edit']);
+    Route::patch('/admin/posts/{post:id}', [AdminPostController::class, 'update']);
+    Route::delete('/admin/posts/{post:id}', [AdminPostController::class, 'destroy']);
+});
+
