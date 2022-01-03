@@ -24,7 +24,7 @@ class AdminPostController extends Controller
         $attributes = $this->validatePost();
 
         $attributes['thumbnail'] = request()->file('thumbnail')->storeAs('thumbnails', request('title') . '.png');
-        $attributes['user_id'] = auth()->user()->id;
+        $attributes['user_id'] ??= auth()->user()->id;
 
         if (request()->has('publish')) {
             $attributes['status'] = 1;
@@ -51,7 +51,8 @@ class AdminPostController extends Controller
             'thumbnail' => $post->exists ? ['image'] : ['required', 'image'],
             'excerpt' => ['required'],
             'body' => ['required'],
-            'category_id' => ['required', Rule::exists('categories', 'id')]
+            'category_id' => ['required', Rule::exists('categories', 'id')],
+            'user_id' => [Rule::exists('users', 'id')]
         ]);
     }
 

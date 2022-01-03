@@ -17,7 +17,7 @@
             <x-form.text-area name="body" required>{{old('body',$post->body)}}</x-form.text-area>
 
             <x-form.field>
-                <x-form.label name="category_id"/>
+                <x-form.label name="category"/>
                 <select name="category_id" id="category_id">
                     @foreach(\App\Models\Category::all() as $category)
                         <option
@@ -25,6 +25,17 @@
                     @endforeach
                 </select>
                 <x-form.error name="category_id"/>
+            </x-form.field>
+
+            <x-form.field>
+                <x-form.label name="Author"/>
+                <select name="user_id" id="user_id">
+                    @foreach(\App\Models\User::all() as $user)
+                        <option
+                            value="{{ $user->id }}" {{ $user->id === old('user_id', $post->user_id)? 'selected' : '' }}> {{ ucwords($user->name) }} </option>
+                    @endforeach
+                </select>
+                <x-form.error name="user_id"/>
             </x-form.field>
 
             <div class="flex">

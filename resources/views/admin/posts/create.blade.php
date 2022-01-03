@@ -20,6 +20,17 @@
                 <x-form.error name="category_id"/>
             </x-form.field>
 
+            <x-form.field>
+                <x-form.label name="Author"/>
+                <select name="user_id" id="user_id">
+                    @foreach(\App\Models\User::all() as $user)
+                        <option
+                            value="{{ $user->id }}" {{ $user->id === old('user_id', auth()->user()->id)? 'selected' : '' }}> {{ ucwords($user->name) }} </option>
+                    @endforeach
+                </select>
+                <x-form.error name="user_id"/>
+            </x-form.field>
+
             <div class="flex">
                 <div class="flex-1 justify-end">
                     <x-form.button name="save" value="save as draft">Save</x-form.button>
