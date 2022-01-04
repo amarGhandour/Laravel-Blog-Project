@@ -5,7 +5,7 @@
 First clone this repository, install the dependencies, and setup your .env file.
 
 ```
-git clone git@github.com:amarGhandour/Laravel-Blog-Project.git blog
+git clone https://github.com/amarGhandour/Laravel-Blog-Project.git blog
 composer install
 cp .env.example .env
 ```
